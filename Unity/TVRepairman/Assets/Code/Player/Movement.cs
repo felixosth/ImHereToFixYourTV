@@ -6,8 +6,6 @@ public class Movement : MonoBehaviour {
 
 	bool onGround;
 	public float Speed = 5;
-	public float RunSpeed = 3;
-	public float JumpHeight = 150;
 	public float MaxVelocityChange = 4;
 
 
