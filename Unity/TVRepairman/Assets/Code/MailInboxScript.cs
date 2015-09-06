@@ -29,11 +29,11 @@ public class MailInboxScript : MonoBehaviour {
 		{
 			Destroy(child.gameObject);
 		}
-        //var scale = GetComponent<RectTransform>().sizeDelta;
-        //float targetY = 65 * mails.Count;
-        //if (scale.y < targetY)
-        //    scale.y = targetY;
-        //GetComponent<RectTransform>().sizeDelta = scale;
+        var scale = GetComponent<RectTransform>().sizeDelta;
+        float targetY = 65 * mails.Count;
+        if (scale.y < targetY)
+            scale.y = targetY;
+        GetComponent<RectTransform>().sizeDelta = scale;
 
 
         for (int i = 0; i < mails.Count; i++)

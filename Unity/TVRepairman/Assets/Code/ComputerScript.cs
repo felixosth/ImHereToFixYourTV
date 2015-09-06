@@ -7,6 +7,7 @@ public class ComputerScript : MonoBehaviour {
 	public GameObject blackPanel;
     public GameObject LoginPanel;
     public GameObject DesktopPanel;
+    public GameObject MailPanel;
 
 
     // Use this for initialization
@@ -20,6 +21,18 @@ public class ComputerScript : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void ExitEmail()
+    {
+        DesktopPanel.SetActive(true);
+        MailPanel.SetActive(false);
+    }
+
+    public void OpenEmail()
+    {
+        DesktopPanel.SetActive(false);
+        MailPanel.SetActive(true);
+    }
 
 
     public void On()
