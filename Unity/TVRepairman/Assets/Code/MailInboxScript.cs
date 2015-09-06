@@ -44,6 +44,7 @@ public class MailInboxScript : MonoBehaviour {
             var ms = m.GetComponent<MailScript>();
             ms.Body = mails[i].Body;
             ms.Subject = mails[i].Subject;
+
             ms.Sender = mails[i].Sender;
             ms.Setup();
 
