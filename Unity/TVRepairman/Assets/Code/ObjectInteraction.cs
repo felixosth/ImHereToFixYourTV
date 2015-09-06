@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ObjectInteraction : MonoBehaviour {
 
@@ -67,6 +68,24 @@ public class ObjectInteraction : MonoBehaviour {
                 lastObj = null;
             }
         }
+
+        if (!isOnComputer)
+        {
+            var objs = GameObject.FindGameObjectsWithTag("ComputerButton");
+            foreach (GameObject gb in objs)
+            {
+                gb.GetComponent<Button>().interactable = false;
+            }
+        }
+        else
+        {
+            var objs = GameObject.FindGameObjectsWithTag("ComputerButton");
+            foreach (GameObject gb in objs)
+            {
+                gb.GetComponent<Button>().interactable = true;
+            }
+        }
+
 
         if (Input.GetMouseButtonDown(1))
         {
