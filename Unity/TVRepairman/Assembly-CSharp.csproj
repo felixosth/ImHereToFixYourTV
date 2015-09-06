@@ -46,8 +46,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\ComputerScript.cs" />
+     <Compile Include="Assets\Code\InteractableObject.cs" />
+     <Compile Include="Assets\Code\MailInboxScript.cs" />
+     <Compile Include="Assets\Code\MailScript.cs" />
+     <Compile Include="Assets\Code\ObjectInteraction.cs" />
      <Compile Include="Assets\Code\Player\Look.cs" />
      <Compile Include="Assets\Code\Player\Movement.cs" />
+     <Compile Include="Assets\Code\ReadMailScript.cs" />
+     <Compile Include="Assets\MailBankScript.cs" />
+     <None Include="Assets\Mails\mail1.txt" />
+     <None Include="Assets\Mails\mail0.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>A:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

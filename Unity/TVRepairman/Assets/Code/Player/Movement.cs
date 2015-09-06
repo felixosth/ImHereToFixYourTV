@@ -8,10 +8,21 @@ public class Movement : MonoBehaviour {
 	public float Speed = 5;
 	public float MaxVelocityChange = 4;
 
+	public ObjectInteraction objScript;
+
+	Rigidbody rigidBody;
+
+	void Start()
+	{
+		rigidBody = GetComponent<Rigidbody>();
+	}
 
 	void FixedUpdate()
 	{
-		GetComponent<Rigidbody>().angularVelocity = new Vector3(0,0,0);
+        if (!objScript.canMove)
+            return;
+
+		rigidBody.angularVelocity = new Vector3(0,0,0);
 
 		var targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		targetVelocity = Camera.main.transform.TransformDirection(targetVelocity);
@@ -23,7 +34,7 @@ public class Movement : MonoBehaviour {
 		velocityChange.z = Mathf.Clamp(velocityChange.z, -MaxVelocityChange, MaxVelocityChange);
 		velocityChange.y = 0;
 
-        GetComponent<Rigidbody>().AddForce(velocityChange, ForceMode.VelocityChange);
+		rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
 		//if(Input.GetButtonDown("Jump") && onGround)
 		//{
 		//	GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight);
