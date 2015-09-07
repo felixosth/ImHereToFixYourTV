@@ -8,6 +8,8 @@ public class ObjectInteraction : MonoBehaviour {
     bool isOnComputer = false;
     public bool canMove = true;
 
+    public float InteractionDistance = 3f;
+
     public Camera computerCamera;
     Camera plyCam;
     public GameObject plyCamObj;
@@ -27,7 +29,7 @@ public class ObjectInteraction : MonoBehaviour {
         RaycastHit hit;
         Ray objRay = new Ray(plyCam.transform.position, plyCam.transform.forward);
         Debug.DrawRay(plyCam.transform.position, plyCam.transform.forward, Color.red);
-        if (Physics.Raycast(objRay, out hit, 2.5f))
+        if (Physics.Raycast(objRay, out hit, InteractionDistance))
         {
             if (hit.collider.tag == "Interactable")
             {

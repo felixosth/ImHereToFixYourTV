@@ -13,6 +13,8 @@ public class MailInboxScript : MonoBehaviour {
 	void Start () {
 
 
+        mails.Add(GameObject.Find("Mail3").GetComponent<MailScript>());
+
         for (int i = 0; i < 5; i++)
         {
             mails.Add(GameObject.Find("Mail1").GetComponent<MailScript>());
@@ -44,6 +46,8 @@ public class MailInboxScript : MonoBehaviour {
             var ms = m.GetComponent<MailScript>();
             ms.Body = mails[i].Body;
             ms.Subject = mails[i].Subject;
+            ms.isMission = mails[i].isMission;
+            ms.MissionTarget = mails[i].MissionTarget;
 
             ms.Sender = mails[i].Sender;
             ms.Setup();

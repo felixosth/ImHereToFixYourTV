@@ -9,18 +9,20 @@ public class MailScript : MonoBehaviour {
     public string Subject;
     public string Body;
     public string Sender;
+    public bool isMission = false;
+    public string MissionTarget;
 
     bool hasRead = false;
 
     public Text SubjectText;
     public Text SenderText;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
-	
+    
 
-	}
+    }
 
     public void Setup()
     {
@@ -28,11 +30,11 @@ public class MailScript : MonoBehaviour {
         SenderText.text = "From: " + Sender;
         SubjectText.text = Subject;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
     public void Read()
     {

@@ -4,7 +4,7 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
 
-	bool onGround;
+
 	public float Speed = 5;
 	public float MaxVelocityChange = 4;
 
@@ -19,8 +19,8 @@ public class Movement : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-        if (!objScript.canMove)
-            return;
+		if (!objScript.canMove)
+			return;
 
 		rigidBody.angularVelocity = new Vector3(0,0,0);
 
@@ -39,15 +39,5 @@ public class Movement : MonoBehaviour {
 		//{
 		//	GetComponent<Rigidbody>().AddForce(transform.up * JumpHeight);
 		//}
-
-		onGround = false;
-	}
-
-	void OnCollisionStay(Collision col)
-	{
-		if(col.transform.tag != "Not Ground")
-		{
-			onGround = true;
-		}
 	}
 }

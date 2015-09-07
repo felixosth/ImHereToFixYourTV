@@ -8,6 +8,8 @@ public class ReadMailScript : MonoBehaviour {
 	public Text SenderText;
 	public Text BodyText;
 
+    public GameObject RemoveButton;
+    public GameObject AcceptMissionButton;
 
 	// Use this for initialization
 	void Start () {
@@ -39,8 +41,23 @@ public class ReadMailScript : MonoBehaviour {
         BodyText.text = mail.Body;
         mail.Read();
 
+        if (mail.isMission)
+        {
+            AcceptMissionButton.SetActive(true);
+            RemoveButton.SetActive(false);
+        }
+        else
+        {
+            AcceptMissionButton.SetActive(false);
+            RemoveButton.SetActive(true);
+
+        }
         selectedObj = mail.gameObject;
     }
 
+    public void AcceptMission()
+    {
+        Application.LoadLevel(selectedObj.GetComponent<MailScript>().MissionTarget);
+    }
 
 }
