@@ -1,7 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{9A99C3F4-80DC-1C7D-600C-C15039B88F4D}") = "TVRepairman", "Assembly-CSharp-firstpass.csproj", "{CF64C685-1824-DE53-F079-0BB5DAA74262}"
+EndProject
 Project("{9A99C3F4-80DC-1C7D-600C-C15039B88F4D}") = "TVRepairman", "Assembly-CSharp.csproj", "{1E78CC64-FB71-3274-0200-083FF4D0BADA}"
+EndProject
+Project("{9A99C3F4-80DC-1C7D-600C-C15039B88F4D}") = "TVRepairman", "Assembly-CSharp-Editor.csproj", "{C64364C7-46D3-607D-6A2C-7E7C45ABA692}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF64C685-1824-DE53-F079-0BB5DAA74262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF64C685-1824-DE53-F079-0BB5DAA74262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF64C685-1824-DE53-F079-0BB5DAA74262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF64C685-1824-DE53-F079-0BB5DAA74262}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E78CC64-FB71-3274-0200-083FF4D0BADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E78CC64-FB71-3274-0200-083FF4D0BADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E78CC64-FB71-3274-0200-083FF4D0BADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E78CC64-FB71-3274-0200-083FF4D0BADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64364C7-46D3-607D-6A2C-7E7C45ABA692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64364C7-46D3-607D-6A2C-7E7C45ABA692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64364C7-46D3-607D-6A2C-7E7C45ABA692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64364C7-46D3-607D-6A2C-7E7C45ABA692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																										GlobalSection(MonoDevelopProperties) = preSolution
+																																															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
