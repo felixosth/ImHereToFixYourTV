@@ -15,12 +15,12 @@ public class MailInboxScript : MonoBehaviour {
 
         mails.Add(GameObject.Find("Mail3").GetComponent<MailScript>());
 
-        for (int i = 0; i < 5; i++)
-        {
-            mails.Add(GameObject.Find("Mail1").GetComponent<MailScript>());
-            mails.Add(GameObject.Find("Mail2").GetComponent<MailScript>());
+        //for (int i = 0; i < 1; i++)
+        //{
+        //    mails.Add(GameObject.Find("Mail1").GetComponent<MailScript>());
+        //    mails.Add(GameObject.Find("Mail2").GetComponent<MailScript>());
 
-        }
+        //}
 
         ReloadMails();
 	}

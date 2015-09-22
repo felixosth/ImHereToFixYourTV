@@ -8,6 +8,7 @@ public class ComputerScript : MonoBehaviour {
     public GameObject LoginPanel;
     public GameObject DesktopPanel;
     public GameObject MailPanel;
+    public GameObject ShoppingPanel;
 
 
     // Use this for initialization
@@ -21,6 +22,18 @@ public class ComputerScript : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void ExitShopping()
+    {
+        ShoppingPanel.SetActive(false);
+        DesktopPanel.SetActive(true);
+    }
+
+    public void OpenShopping()
+    {
+        DesktopPanel.SetActive(false);
+        ShoppingPanel.SetActive(true);
+    }
 
     public void ExitEmail()
     {

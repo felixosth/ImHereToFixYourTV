@@ -22,11 +22,13 @@ public class Look : MonoBehaviour {
     void Start()
     {
         cam = Camera.main.gameObject;
+
     }
 
 
     void Update ()
 	{
+
         if (!objScript.canMove)
             return;
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ObjectInteraction : MonoBehaviour {
 
@@ -14,62 +15,31 @@ public class ObjectInteraction : MonoBehaviour {
     Camera plyCam;
     public GameObject plyCamObj;
 
+    public bool isRepairingTV = false;
+
+    public Camera lastTVCam;
+    bool blockRayThisFrame = false;
+
+    public GameObject currentTV;
+
+    InventoryManagement invMng;
+
 	// Use this for initialization
 	void Start () {
+        invMng = GetComponent<InventoryManagement>();
 
         plyCam = plyCamObj.GetComponent<Camera>();
-	
-	}
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     GameObject lastObj;
 
 	// Update is called once per frame
 	void Update () {
 
-        RaycastHit hit;
-        Ray objRay = new Ray(plyCam.transform.position, plyCam.transform.forward);
-        Debug.DrawRay(plyCam.transform.position, plyCam.transform.forward, Color.red);
-        if (Physics.Raycast(objRay, out hit, InteractionDistance))
-        {
-            if (hit.collider.tag == "Interactable")
-            {
-                if (lastObj != null)
-                    lastObj.GetComponent<InteractableObject>().isLookingAt = false;
-
-                lastObj = hit.collider.gameObject;
-                var script = hit.collider.GetComponent<InteractableObject>();
-
-
-                if(!isOnComputer)
-                    script.isLookingAt = true;
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    switch (script.DisplayText)
-                    {
-                        case "Computer":
-                            if (canMove)
-                            {
-                                computerCamera.enabled = true;
-                                isOnComputer = true;
-                                plyCam.enabled = false;
-                                canMove = false;
-                                script.isLookingAt = false;
-                            }
-                            break;
-                    }
-                }
-
-            }
-        }
-        else
-        {
-            if (lastObj != null)
-            {
-                lastObj.GetComponent<InteractableObject>().isLookingAt = false;
-                lastObj = null;
-            }
-        }
+        blockRayThisFrame = false;
 
         if (!isOnComputer)
         {
@@ -89,15 +59,114 @@ public class ObjectInteraction : MonoBehaviour {
         }
 
 
-        if (Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButton(0) && !isOnComputer && !isRepairingTV && Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) && Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (isOnComputer && !canMove)
             {
+                blockRayThisFrame = true;
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 plyCam.enabled = true;
                 isOnComputer = false;
 
                 computerCamera.enabled = false;
                 canMove = true;
+            }
+            else if (isRepairingTV && !canMove)
+            {
+                blockRayThisFrame = true;
+
+                isRepairingTV = false;
+                plyCam.enabled = true;
+                lastTVCam.enabled = false;
+                lastTVCam.GetComponent<PhysicsRaycaster>().enabled = false;
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                canMove = true;
+            }
+        }
+
+        RaycastHit hit;
+        Ray objRay = new Ray(plyCam.transform.position, plyCam.transform.forward);
+        Debug.DrawRay(plyCam.transform.position, plyCam.transform.forward, Color.red);
+        if (Physics.Raycast(objRay, out hit, InteractionDistance) && !blockRayThisFrame)
+        {
+            if (hit.collider.tag == "Interactable")
+            {
+                if (lastObj != null)
+                    lastObj.GetComponent<InteractableObject>().isLookingAt = false;
+
+                lastObj = hit.collider.gameObject;
+                var script = hit.collider.GetComponent<InteractableObject>();
+
+
+                if (!isOnComputer)
+                    script.isLookingAt = true;
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    switch (script.DisplayText)
+                    {
+                        case "Computer":
+                            if (canMove)
+                            {
+                                Cursor.lockState = CursorLockMode.None;
+                                Cursor.visible = true;
+
+                                computerCamera.enabled = true;
+                                isOnComputer = true;
+                                plyCam.enabled = false;
+                                canMove = false;
+                                script.isLookingAt = false;
+                            }
+                            break;
+                    }
+                }
+
+            }
+            else if (hit.collider.tag == "TV")
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    currentTV = hit.collider.transform.parent.gameObject;
+                    var script = hit.collider.GetComponentInParent<InteractableTV>();
+                    canMove = false;
+                    lastTVCam = script.gameObject.GetComponentInChildren<Camera>();
+                    lastTVCam.GetComponent<PhysicsRaycaster>().enabled = true;
+                    lastTVCam.enabled = true;
+                    plyCam.enabled = false;
+                    isRepairingTV = true;
+
+
+
+                    invMng.RefreshInventory();
+                    
+                }
+
+            }
+        }
+        else
+        {
+            if (lastObj != null)
+            {
+                lastObj.GetComponent<InteractableObject>().isLookingAt = false;
+                lastObj = null;
             }
         }
     }
