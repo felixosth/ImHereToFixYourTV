@@ -1,1 +1,1 @@
-Welcome!|game@imheretofixyour.tv|Hello, and welcome to the game(which is under early developement)! Press 'accept mission' to restart the game.|apartment
+Your first contract!|boss@imheretofixyour.tv|Hello, and welcome to the game(which is under early developement)! Press 'accept mission' to initiate your new contract! You can travel to the location by clicking E on your door!|mission1

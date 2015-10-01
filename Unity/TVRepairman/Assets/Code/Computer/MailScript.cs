@@ -12,8 +12,6 @@ public class MailScript : MonoBehaviour {
     public bool isMission = false;
     public string MissionTarget;
 
-    bool hasRead = false;
-
     public Text SubjectText;
     public Text SenderText;
 

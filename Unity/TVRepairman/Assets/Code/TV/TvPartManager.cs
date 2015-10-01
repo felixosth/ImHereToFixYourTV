@@ -49,7 +49,6 @@ public class TvPartManager : MonoBehaviour {
     {
         for (int i = 0; i < parts.Length; i++)
         {
-            print(slotNames[i] + " " + parts[i]);
             if (partName == slotNames[i] && !parts[i])
             {
                 parts[i] = (GameObject)Instantiate(invMng.GetPart(partName), partPositions[i], partRotations[i]);

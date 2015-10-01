@@ -8,6 +8,8 @@ public class ReadMailScript : MonoBehaviour {
 	public Text SenderText;
 	public Text BodyText;
 
+    public MissionMng missionMng;
+
     public GameObject RemoveButton;
     public GameObject AcceptMissionButton;
 
@@ -57,7 +59,10 @@ public class ReadMailScript : MonoBehaviour {
 
     public void AcceptMission()
     {
-        Application.LoadLevel(selectedObj.GetComponent<MailScript>().MissionTarget);
+        //Application.LoadLevel(selectedObj.GetComponent<MailScript>().MissionTarget);
+        missionMng.currentMission = selectedObj.GetComponent<MailScript>().MissionTarget;
+        missionMng.missionIsActive = true;
+        AcceptMissionButton.GetComponent<Button>().interactable = false;
     }
 
 }

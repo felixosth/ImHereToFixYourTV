@@ -59,7 +59,7 @@ public class ObjectInteraction : MonoBehaviour {
         }
 
 
-        if(Input.GetMouseButton(0) && !isOnComputer && !isRepairingTV && Cursor.lockState != CursorLockMode.Locked)
+        if(Input.GetMouseButton(0) && canMove && Cursor.lockState != CursorLockMode.Locked)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -100,6 +100,9 @@ public class ObjectInteraction : MonoBehaviour {
             }
         }
 
+
+        if (lastObj != null)
+            lastObj.GetComponent<InteractableObject>().isLookingAt = false;
         RaycastHit hit;
         Ray objRay = new Ray(plyCam.transform.position, plyCam.transform.forward);
         Debug.DrawRay(plyCam.transform.position, plyCam.transform.forward, Color.red);
@@ -107,8 +110,7 @@ public class ObjectInteraction : MonoBehaviour {
         {
             if (hit.collider.tag == "Interactable")
             {
-                if (lastObj != null)
-                    lastObj.GetComponent<InteractableObject>().isLookingAt = false;
+
 
                 lastObj = hit.collider.gameObject;
                 var script = hit.collider.GetComponent<InteractableObject>();
@@ -152,8 +154,6 @@ public class ObjectInteraction : MonoBehaviour {
                     lastTVCam.enabled = true;
                     plyCam.enabled = false;
                     isRepairingTV = true;
-
-
 
                     invMng.RefreshInventory();
                     

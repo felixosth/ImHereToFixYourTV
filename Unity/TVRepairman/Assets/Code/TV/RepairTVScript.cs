@@ -14,14 +14,11 @@ public class RepairTVScript : MonoBehaviour {
 
 	public GameObject inventoryPrefab;
 
-    InventoryManagement invMng;
-
 	GameObject lastPart;
 
 	// Use this for initialization
 	void Start () {
 
-        invMng = GetComponent<InventoryManagement>();
 		objInt = GetComponent<ObjectInteraction>();
 	
 	}
@@ -29,17 +26,21 @@ public class RepairTVScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        var canvas = repairCanvas.GetComponent<Canvas>();
-		if (objInt.isRepairingTV && !canvas.enabled)
-		{
-            repairCanvas.GetComponent<Canvas>().enabled = true;
-		}
-		else if (!objInt.isRepairingTV && canvas.enabled)
-		{
-			Destroy(menu);
-			repairCanvas.GetComponent<Canvas>().enabled = false;
+        if (repairCanvas)
+        {
 
-		}
+            var canvas = repairCanvas.GetComponent<Canvas>();
+            if (objInt.isRepairingTV && !canvas.enabled)
+            {
+                repairCanvas.GetComponent<Canvas>().enabled = true;
+            }
+            else if (!objInt.isRepairingTV && canvas.enabled)
+            {
+                Destroy(menu);
+                repairCanvas.GetComponent<Canvas>().enabled = false;
+
+            }
+        }
 	}
 
 

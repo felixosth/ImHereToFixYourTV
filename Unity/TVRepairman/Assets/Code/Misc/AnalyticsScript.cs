@@ -9,7 +9,6 @@ public class AnalyticsScript : MonoBehaviour {
 
     void OnApplicationQuit()
     {
-        print("Quit");
         Analytics.CustomEvent("QuitGame", new Dictionary<string, object>
         {
             { "TimePlayed", Mathf.RoundToInt(Time.time/60) }
