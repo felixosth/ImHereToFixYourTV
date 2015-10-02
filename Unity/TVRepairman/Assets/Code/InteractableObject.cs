@@ -18,7 +18,6 @@ public class InteractableObject : MonoBehaviour {
 
 
     public MyEvent onClickEvent;
-    public string arg;
 
     
     public bool isDoor;

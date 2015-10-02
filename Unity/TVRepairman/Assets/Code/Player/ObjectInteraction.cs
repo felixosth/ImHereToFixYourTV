@@ -15,7 +15,12 @@ public class ObjectInteraction : MonoBehaviour {
     Camera plyCam;
     public GameObject plyCamObj;
 
+    public Color hudImageColor;
+
     public bool isRepairingTV = false;
+
+    public GameObject hudCanvas;
+
 
     public Camera lastTVCam;
     bool blockRayThisFrame = false;
@@ -102,7 +107,15 @@ public class ObjectInteraction : MonoBehaviour {
 
 
         if (lastObj != null)
+        {
             lastObj.GetComponent<InteractableObject>().isLookingAt = false;
+            hudCanvas.GetComponentInChildren<Image>().sprite = null;
+            hudCanvas.GetComponentInChildren<Text>().text = "";
+            var img = hudCanvas.GetComponentInChildren<Image>();
+
+            img.color = new Color(1, 1, 1, 0);
+
+        }
         RaycastHit hit;
         Ray objRay = new Ray(plyCam.transform.position, plyCam.transform.forward);
         Debug.DrawRay(plyCam.transform.position, plyCam.transform.forward, Color.red);
@@ -117,7 +130,16 @@ public class ObjectInteraction : MonoBehaviour {
 
 
                 if (!isOnComputer)
+                {
                     script.isLookingAt = true;
+                    if(script.DisplaySprite)
+                    {
+                        var img = hudCanvas.GetComponentInChildren<Image>();
+                        img.sprite = script.DisplaySprite;
+                        img.color = hudImageColor;
+                        hudCanvas.GetComponentInChildren<Text>().text = script.DisplayText;
+                    }
+                }
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
