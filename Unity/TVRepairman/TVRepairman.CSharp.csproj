@@ -15,7 +15,7 @@
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneOSXIntel:4</UnityBuildTarget>
+    <UnityBuildTarget>StandaloneOSXUniversal:2</UnityBuildTarget>
     <UnityVersion>5.2.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
   </PropertyGroup>
@@ -82,24 +82,24 @@
     <Compile Include="Assets\Code\Computer\MailInboxScript.cs" />
     <Compile Include="Assets\Code\Computer\MailScript.cs" />
     <Compile Include="Assets\Code\Computer\ReadMailScript.cs" />
+    <Compile Include="Assets\Code\FastTravelScript.cs" />
     <Compile Include="Assets\Code\InteractableObject.cs" />
+    <Compile Include="Assets\Code\InventoryManagement.cs" />
     <Compile Include="Assets\Code\Misc\AnalyticsScript.cs" />
+    <Compile Include="Assets\Code\MissionMng.cs" />
+    <Compile Include="Assets\Code\MoneyManagement.cs" />
     <Compile Include="Assets\Code\Player\Look.cs" />
     <Compile Include="Assets\Code\Player\Movement.cs" />
     <Compile Include="Assets\Code\Player\ObjectInteraction.cs" />
+    <Compile Include="Assets\Code\ShoppingItem.cs" />
+    <Compile Include="Assets\Code\ShoppingScript.cs" />
     <Compile Include="Assets\Code\TV\InteractableTV.cs" />
     <Compile Include="Assets\Code\TV\InventoryPart.cs" />
     <Compile Include="Assets\Code\TV\PartMenuScript.cs" />
     <Compile Include="Assets\Code\TV\RepairTVScript.cs" />
     <Compile Include="Assets\Code\TV\TVPartScript.cs" />
     <Compile Include="Assets\Code\TV\TvPartManager.cs" />
-    <Compile Include="Assets\FastTravelScript.cs" />
-    <Compile Include="Assets\InventoryManagement.cs" />
-    <Compile Include="Assets\MissionMng.cs" />
-    <Compile Include="Assets\MoneyManagement.cs" />
-    <Compile Include="Assets\ShoppingItem.cs" />
-    <Compile Include="Assets\ShoppingScript.cs" />
-    <Compile Include="Assets\TravelCanvasManagerScript.cs" />
+    <Compile Include="Assets\Code\TravelCanvasManagerScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mails\mail0.txt" />

@@ -64,7 +64,7 @@ public class ObjectInteraction : MonoBehaviour {
         }
 
 
-        if(Input.GetMouseButton(0) && canMove && Cursor.lockState != CursorLockMode.Locked)
+        if (Input.GetMouseButton(0) && canMove && Cursor.lockState != CursorLockMode.Locked)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -108,17 +108,17 @@ public class ObjectInteraction : MonoBehaviour {
 
         if (lastObj != null)
         {
-            lastObj.GetComponent<InteractableObject>().isLookingAt = false;
-            hudCanvas.GetComponentInChildren<Image>().sprite = null;
-            hudCanvas.GetComponentInChildren<Text>().text = "";
-            var img = hudCanvas.GetComponentInChildren<Image>();
+            hudCanvas.SetActive(false);
 
-            img.color = new Color(1, 1, 1, 0);
+            lastObj.GetComponent<InteractableObject>().isLookingAt = false;
+            //hudCanvas.GetComponentInChildren<Image>().sprite = null;
+            //hudCanvas.GetComponentInChildren<Text>().text = "";
+            //var img = hudCanvas.GetComponentInChildren<Image>();
 
         }
+
         RaycastHit hit;
         Ray objRay = new Ray(plyCam.transform.position, plyCam.transform.forward);
-        Debug.DrawRay(plyCam.transform.position, plyCam.transform.forward, Color.red);
         if (Physics.Raycast(objRay, out hit, InteractionDistance) && !blockRayThisFrame)
         {
             if (hit.collider.tag == "Interactable")
@@ -134,10 +134,12 @@ public class ObjectInteraction : MonoBehaviour {
                     script.isLookingAt = true;
                     if(script.DisplaySprite)
                     {
+                        hudCanvas.SetActive(true);
                         var img = hudCanvas.GetComponentInChildren<Image>();
                         img.sprite = script.DisplaySprite;
                         img.color = hudImageColor;
                         hudCanvas.GetComponentInChildren<Text>().text = script.DisplayText;
+
                     }
                 }
 
